@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cd $HOME/aws-tests/helloworld_ocl
 make exe
 sudo sh
 source /opt/Xilinx/SDx/2017.4.rte.dyn/setup.sh
