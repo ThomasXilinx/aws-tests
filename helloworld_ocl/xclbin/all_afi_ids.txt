@@ -1,0 +1,5 @@
+global   : agfi-019bdc344beb71ad4
+
+us-west-2: afi-071864521508ca995
+us-east-1: afi-0470fcdd9ab2d8aee
+eu-west-1: afi-0fdea26c026b87c4f
