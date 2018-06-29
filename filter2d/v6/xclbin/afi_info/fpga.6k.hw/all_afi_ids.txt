@@ -1,0 +1,31 @@
+
+
+{
+    "FpgaImages": [
+        {
+            "UpdateTime": "2018-06-29T15:49:04.000Z",
+            "Name": "fpga.6k.hw",
+            "FpgaImageGlobalId": "agfi-0aa18a491055b5d91",
+            "Public": false,
+            "State": {
+                "Code": "pending"
+            },
+            "OwnerId": "169615621399",
+            "FpgaImageId": "afi-0a12e27192c4b4903",
+            "CreateTime": "2018-06-29T15:49:04.000Z",
+            "Description": "fpga.6k.hw"
+        }
+    ]
+}
+afi-0a12e27192c4b4903
+
+aws ec2 copy-fpga-image --name copy-afi --source-fpga-image-id $AFI_ID --source-region us-west-2 --region eu-west-1
+{
+    "FpgaImageId": "afi-06c400f5bc45adfeb"
+}
+
+aws ec2 copy-fpga-image --name copy-afi --source-fpga-image-id $AFI_ID --source-region us-west-2 --region eu-west-1
+{
+    "FpgaImageId": "afi-08d13c6beb3075173"
+}
+

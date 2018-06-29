@@ -24,5 +24,11 @@ $SDACCEL_DIR/tools/create_sdaccel_afi.sh -s3_bucket=myafibucket -s3_dcp_key=dcpf
 
 wait
 
+mkdir output
+mkdir output/afi_info
+cp *.awsxclbin output
+cp *.txt output/afi_info
+
 ~/aws-tests/afi_status.sh 
+
 
