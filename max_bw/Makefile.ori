@@ -1,0 +1,33 @@
+COMMON_REPO := ${AWS_FPGA_REPO_DIR}/SDAccel/examples/xilinx
+
+include $(COMMON_REPO)/utility/boards.mk
+include $(COMMON_REPO)/libs/xcl2/xcl2.mk
+include $(COMMON_REPO)/libs/opencl/opencl.mk
+
+# kernel Host Application
+host_SRCS=./src/host.cpp ./src/xcl2.cpp ./src/logger.cpp ./src/cmdlineparser.cpp
+host_HDRS=./src/xcl2.hpp ./src/logger.h ./src/cmdlineparser.h
+host_CXXFLAGS=-I./src/ $(xcl2_CXXFLAGS) $(opencl_CXXFLAGS)
+host_LDFLAGS=$(opencl_LDFLAGS)
+
+EXES=host
+
+# kernel Kernels
+kernel_SRCS=./src/kernel.cpp
+kernel_CLFLAGS=-k CopyKernel
+
+XOS=kernel
+
+# xclbin
+kernel_XOS=kernel
+
+XCLBINS=kernel
+
+# check
+check_EXE=host
+check_XCLBINS=kernel
+
+CHECKS=check
+
+include $(COMMON_REPO)/utility/rules.mk
+
