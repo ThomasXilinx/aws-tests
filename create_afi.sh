@@ -1,10 +1,10 @@
 #!/bin/bash
 
-: "${AWS_ACCESS_KEY_ID:?Need to set AWS_ACCESS_KEY_ID}"
-: "${AWS_SECRET_ACCESS_KEY:?Need to set AWS_SECRET_ACCESS_KEY}"
-: "${AWS_DEFAULT_REGION:?Need to set AWS_DEFAULT_REGION}"
-: "${AWS_DEFAULT_OUTPUT:?Need to set AWS_DEFAULT_OUTPUT}"
-: "${1:?Need to provide an input xclbin file}"
+#: "${AWS_ACCESS_KEY_ID:?Need to set AWS_ACCESS_KEY_ID}"
+#: "${AWS_SECRET_ACCESS_KEY:?Need to set AWS_SECRET_ACCESS_KEY}"
+#: "${AWS_DEFAULT_REGION:?Need to set AWS_DEFAULT_REGION}"
+#: "${AWS_DEFAULT_OUTPUT:?Need to set AWS_DEFAULT_OUTPUT}"
+#: "${1:?Need to provide an input xclbin file}"
 
 file=$(basename ${1})
 echo $file
@@ -16,19 +16,19 @@ else
 fi
 
 xclbinfile=$PWD/$file
-awsxclbindir=$file.aws
+awsxclbindir=afi.$file
 mkdir $awsxclbindir
 cd $awsxclbindir
 
-$SDACCEL_DIR/tools/create_sdaccel_afi.sh -s3_bucket=myafibucket -s3_dcp_key=dcpfolder -s3_logs_key=logsfolder -xclbin=$xclbinfile
+$SDACCEL_DIR/tools/create_sdaccel_afi.sh -s3_bucket=aws-xlnx-f1-developer -s3_dcp_key=pavan@xilinx.com/f1-dcp-folder -s3_logs_key=pavan@xilinx.com/logs -xclbin=$xclbinfile
 
 wait
 
-mkdir output
-mkdir output/afi_info
-cp *.awsxclbin output
-cp *.txt output/afi_info
+mkdir ../afi
+mkdir ../afi/info
+cp *.awsxclbin ../afi
+cp *.txt ../afi/info
 
-~/aws-tests/afi_status.sh 
+echo "Use ~/aws-tests/afi_status.sh to check status of the AFI"
 
 
