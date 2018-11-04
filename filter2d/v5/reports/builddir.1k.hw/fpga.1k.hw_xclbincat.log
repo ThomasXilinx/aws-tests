@@ -1,7 +1,0 @@
-INFO: Adding section [BITSTREAM (0)] using: 'routed' (235716884 Bytes)
-INFO: Adding section [EMBEDDED_METADATA (2)] using: 'fpga.1k.hw' (6471 Bytes)
-INFO: Adding section [MEM_TOPOLOGY (6)] using: 'runtime_data' (168 Bytes)
-INFO: Adding section [CONNECTIVITY (7)] using: 'runtime_data' (40 Bytes)
-INFO: Adding section [IP_LAYOUT (8)] using: 'runtime_data' (88 Bytes)
-INFO: Adding section [CLOCK_FREQ_TOPOLOGY (11)] using: 'runtime_data' (410 Bytes)
-Successfully completed 'xclbincat'
