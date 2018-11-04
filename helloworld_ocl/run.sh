@@ -1,7 +1,12 @@
 #!/bin/bash
 
+function run_on_f1 {
+sudo sh -s -- <<EOF
+        source /opt/xilinx/xrt/setup.sh
+	./helloworld
+EOF
+}
+
 make exe
-sudo sh
-source /opt/Xilinx/SDx/2017.4.rte.dyn/setup.sh
-./helloworld
-exit
+run_on_f1
+

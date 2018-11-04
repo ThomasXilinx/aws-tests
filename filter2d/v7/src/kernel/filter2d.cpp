@@ -62,15 +62,15 @@ void Filter2DKernel(
 	unsigned int stride,
 	ap_uint<AXIMM_DATA_WIDTH>* dst)
   {
-    #pragma HLS INTERFACE m_axi     port=coeffs offset=slave bundle=gmem1   max_read_burst_length=256
+    #pragma HLS INTERFACE m_axi     port=coeffs offset=slave bundle=port0   max_read_burst_length=256
     #pragma HLS INTERFACE s_axilite port=coeffs              bundle=control    
     #pragma HLS INTERFACE s_axilite port=factor              bundle=control
-    #pragma HLS INTERFACE m_axi     port=src    offset=slave bundle=gmem0   max_read_burst_length=256
+    #pragma HLS INTERFACE m_axi     port=src    offset=slave bundle=port1   max_read_burst_length=256
     #pragma HLS INTERFACE s_axilite port=src                 bundle=control
     #pragma HLS INTERFACE s_axilite port=width               bundle=control
     #pragma HLS INTERFACE s_axilite port=height              bundle=control
     #pragma HLS INTERFACE s_axilite port=stride              bundle=control
-    #pragma HLS INTERFACE m_axi     port=dst    offset=slave bundle=gmem2   max_write_burst_length=256
+    #pragma HLS INTERFACE m_axi     port=dst    offset=slave bundle=port2   max_write_burst_length=256
     #pragma HLS INTERFACE s_axilite port=dst                 bundle=control
     #pragma HLS INTERFACE s_axilite port=return              bundle=control
 
@@ -78,15 +78,14 @@ void Filter2DKernel(
 	assert(width <= 1920);
 	assert(height<= 1080);
 #endif
-            
-	// Stream of pixels from kernel input to filter, and from filter to output
-	static hls::stream<U8> src_pixels;
+
+    #pragma HLS DATAFLOW
+         
+    // Stream of pixels from kernel input to filter, and from filter to output
+    static hls::stream<U8> src_pixels;
 	static hls::stream<U8> dst_pixels;
 	#pragma HLS stream variable=src_pixels depth=64
 	#pragma HLS stream variable=dst_pixels depth=64
-
-
-	#pragma HLS DATAFLOW
 
 	// Read image data from global memory over AXI4 MM, and stream pixels out
 	AXIBursts2PixelStream((AXIMM)src, width, height, stride, src_pixels);

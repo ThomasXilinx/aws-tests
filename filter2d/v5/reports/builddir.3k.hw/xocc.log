@@ -1,0 +1,157 @@
+INFO: [XOCC 60-897] Reading --xp value from platform: param:compiler.lockFlowCritSlackThreshold=0
+INFO: [XOCC 60-897] Reading --xp value from platform: vivado_param:bd.disablePrefixForFaasIntf=1
+INFO: [XOCC 60-897] Reading --xp value from platform: vivado_param:hd.routingContainmentAreaExpansion=true
+INFO: [XOCC 60-897] Reading --xp value from platform: vivado_param:hd.supportClockNetCrossDiffReconfigurablePartitions=1
+INFO: [XOCC 60-897] Reading --xp value from platform: vivado_param:bitstream.enablePR=4123
+INFO: [XOCC 60-897] Reading --xp value from platform: vivado_param:physynth.ultraRAMOptOutput=false
+INFO: [XOCC 60-897] Reading --xp value from platform: vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MAX_URAM_CASCADE_HEIGHT}={1}
+INFO: [XOCC 60-897] Reading --xp value from platform: vivado_param:synth.elaboration.rodinMoreOptions={rt::set_parameter disableOregPackingUram true}
+INFO: [XOCC 60-629] Linking for hardware target
+INFO: [XOCC 60-895]   Target platform: /proj/xbuilds/2018.2_released/internal_platforms/xilinx_aws-vu9p-f1-04261818_dynamic_5_0/xilinx_aws-vu9p-f1-04261818_dynamic_5_0.xpfm
+INFO: [XOCC 60-423]   Target device: xilinx_aws-vu9p-f1-04261818_dynamic_5_0
+INFO: [XOCC 60-825] xocc command line options for sdx_link are --xo xclbin/Filter2DKernel.hw.xo --nk Filter2DKernel:3 -keep 
+using /proj/xbuilds/released/2018.2/GA/2018.2_0614_1954/internal_platforms/xilinx_aws-vu9p-f1-04261818_dynamic_5_0/xilinx_aws-vu9p-f1-04261818_dynamic_5_0.xpfm
+extracting xo v3 file /home/tbollaer/Work/aws-tests/filter2d/v5/xclbin/Filter2DKernel.hw.xo
+Creating IP database /home/tbollaer/Work/aws-tests/filter2d/v5/builddir.3k.hw/link/sys_link/_sds/.cdb/xd_ip_db.xml
+processing accelerators: /home/tbollaer/Work/aws-tests/filter2d/v5/builddir.3k.hw/link/sys_link/iprepo/xilinx_com_hls_Filter2DKernel_1_0
+ip_dir: /home/tbollaer/Work/aws-tests/filter2d/v5/builddir.3k.hw/link/sys_link/iprepo/xilinx_com_hls_Filter2DKernel_1_0
+/proj/xbuilds/released/2018.2/GA/2018.2_0614_1954/installs/lin64/SDx/2018.2/bin/xsltproc --stringparam xpath "spirit:component/spirit:name/text()" /proj/xbuilds/released/2018.2/GA/2018.2_0614_1954/installs/lin64/SDx/2018.2/scripts/xdcc/xpathValueOf.xsl /home/tbollaer/Work/aws-tests/filter2d/v5/builddir.3k.hw/link/sys_link/iprepo/xilinx_com_hls_Filter2DKernel_1_0/component.xml
+ip_name: Filter2DKernel
+Creating apsys_0.xml
+INFO: [CFGEN 83-0] Kernel Specs: 
+INFO: [CFGEN 83-0]   kernel: Filter2DKernel, num: 3, inst(0): Filter2DKernel_1, inst(1): Filter2DKernel_2, inst(2): Filter2DKernel_3
+
+Creating dr.bd.tcl
+INFO: [CF2XD 83-2203] Adding accelerator adapters...
+INFO: [CF2XD 83-2200] Adding axi_interconnects...
+INFO: [CF2XD 83-2201] Adding axi_stream_router for scatter-gather DMAs...
+INFO: [CF2XD 83-2202] Adding axi_dwidth_converters...
+INFO: [CF2XD 83-2208] Adding bus connections for logical connections...
+INFO: [CF2XD 83-2205] Adding clock connections...
+INFO: [CF2XD 83-2206] Adding reset connections...
+INFO: [XOCC 60-812] xocc command line options for vpl are --xp param:compiler.lockFlowCritSlackThreshold=0 --xp vivado_param:bd.disablePrefixForFaasIntf=1 --xp vivado_param:hd.routingContainmentAreaExpansion=true --xp vivado_param:hd.supportClockNetCrossDiffReconfigurablePartitions=1 --xp vivado_param:bitstream.enablePR=4123 --xp vivado_param:physynth.ultraRAMOptOutput=false --xp vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MAX_URAM_CASCADE_HEIGHT}={1} --xp vivado_param:synth.elaboration.rodinMoreOptions={rt::set_parameter disableOregPackingUram true} -t hw -f xilinx_aws-vu9p-f1-04261818_dynamic_5_0 --nk Filter2DKernel:3 --xp param:compiler.enablePerformanceTrace=1 --xp misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10} --xp vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high} --xp param:compiler.enableRunInBitstreamGeneration=1 -s 
+
+****** vpl v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+Attempting to get a license: ap_opencl
+Feature available: ap_opencl
+INFO: [VPL 60-839] Read in kernel information from file '/home/tbollaer/Work/aws-tests/filter2d/v5/builddir.3k.hw/link/int/kernel_info.dat'.
+INFO: [VPL 60-423]   Target device: xilinx_aws-vu9p-f1-04261818_dynamic_5_0
+INFO: [VPL 60-1032] Extracting DSA to /home/tbollaer/Work/aws-tests/filter2d/v5/builddir.3k.hw/link/vivado/.local/dsa
+INFO: [VPL 60-251]   Hardware accelerator integration...
+Creating Vivado project and starting FPGA synthesis.
+[00:37:59] Block-level synthesis in progress, 0 of 10 jobs complete, 7 jobs running.
+[00:39:06] Block-level synthesis in progress, 0 of 10 jobs complete, 7 jobs running.
+[00:40:13] Block-level synthesis in progress, 2 of 10 jobs complete, 5 jobs running.
+[00:41:21] Block-level synthesis in progress, 4 of 10 jobs complete, 3 jobs running.
+[00:42:29] Block-level synthesis in progress, 5 of 10 jobs complete, 2 jobs running.
+[00:43:37] Block-level synthesis in progress, 5 of 10 jobs complete, 2 jobs running.
+[00:44:46] Block-level synthesis in progress, 5 of 10 jobs complete, 2 jobs running.
+[00:45:54] Block-level synthesis in progress, 8 of 10 jobs complete, 1 job running.
+[00:47:04] Block-level synthesis in progress, 8 of 10 jobs complete, 1 job running.
+[00:48:12] Block-level synthesis in progress, 8 of 10 jobs complete, 1 job running.
+[00:49:22] Block-level synthesis in progress, 8 of 10 jobs complete, 1 job running.
+[00:50:31] Block-level synthesis in progress, 9 of 10 jobs complete, 1 job running.
+[00:51:39] Block-level synthesis in progress, 9 of 10 jobs complete, 1 job running.
+[00:52:46] Block-level synthesis in progress, 10 of 10 jobs complete, 0 jobs running.
+[00:53:53] Top-level synthesis in progress.
+[00:55:00] Top-level synthesis in progress.
+[00:56:07] Top-level synthesis in progress.
+[00:57:15] Top-level synthesis in progress.
+[00:58:23] Top-level synthesis in progress.
+[00:59:30] Top-level synthesis in progress.
+[01:00:38] Top-level synthesis in progress.
+[01:12:00] Finished 2nd of 6 tasks (FPGA linking synthesized kernels to platform). Elapsed time: 00h 41m 08s 
+
+[01:12:00] Starting logic optimization..
+[01:14:06] Phase 1 Retarget
+[01:14:36] Phase 2 Constant propagation
+[01:14:55] Phase 3 Sweep
+[01:15:59] Phase 4 BUFG optimization
+[01:16:21] Phase 5 Shift Register Optimization
+[01:17:03] Phase 6 Post Processing Netlist
+[01:18:30] Finished 3rd of 6 tasks (FPGA logic optimization). Elapsed time: 00h 06m 29s 
+
+[01:18:30] Starting logic placement..
+[01:19:43] Phase 1 Placer Initialization
+[01:19:43] Phase 1.1 Placer Initialization Netlist Sorting
+[01:23:41] Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+[01:25:52] Phase 1.3 Build Placer Netlist Model
+[01:28:53] Phase 1.4 Constrain Clocks/Macros
+[01:29:13] Phase 2 Global Placement
+[01:29:13] Phase 2.1 Floorplanning
+[01:42:21] Phase 2.2 Physical Synthesis In Placer
+[01:45:28] Phase 3 Detail Placement
+[01:45:28] Phase 3.1 Commit Multi Column Macros
+[01:45:41] Phase 3.2 Commit Most Macros & LUTRAMs
+[01:46:06] Phase 3.3 Area Swap Optimization
+[01:46:26] Phase 3.4 Pipeline Register Optimization
+[01:46:33] Phase 3.5 IO Cut Optimizer
+[01:46:40] Phase 3.6 Timing Path Optimizer
+[01:46:40] Phase 3.7 Fast Optimization
+[01:47:05] Phase 3.8 Small Shape Clustering
+[01:47:33] Phase 3.9 DP Optimization
+[01:50:23] Phase 3.10 Flow Legalize Slice Clusters
+[01:50:23] Phase 3.11 Slice Area Swap
+[01:50:51] Phase 3.12 Commit Slice Clusters
+[01:51:12] Phase 3.13 Place Remaining
+[01:51:20] Phase 3.14 Re-assign LUT pins
+[01:51:38] Phase 3.15 Pipeline Register Optimization
+[01:51:45] Phase 3.16 Fast Optimization
+[01:54:01] Phase 4 Post Placement Optimization and Clean-Up
+[01:54:01] Phase 4.1 Post Commit Optimization
+[01:55:27] Phase 4.1.1 Post Placement Optimization
+[01:55:34] Phase 4.1.1.1 BUFG Insertion
+[01:58:16] Phase 4.1.1.2 Replication
+[01:59:06] Phase 4.2 Post Placement Cleanup
+[01:01:34] Phase 4.3 Placer Reporting
+[01:01:40] Phase 4.4 Final Placement Cleanup
+[01:04:01] Finished 4th of 6 tasks (FPGA logic placement). Elapsed time: 00h 45m 31s 
+
+[01:04:01] Starting logic routing..
+[01:05:31] Phase 1 Build RT Design
+[01:09:21] Phase 2 Router Initialization
+[01:09:27] Phase 2.1 Fix Topology Constraints
+[01:09:34] Phase 2.2 Pre Route Cleanup
+[01:09:59] Phase 2.3 Global Clock Net Routing
+[01:10:26] Phase 2.4 Update Timing
+[01:13:15] Phase 2.5 Update Timing for Bus Skew
+[01:13:15] Phase 2.5.1 Update Timing
+[01:14:31] Phase 3 Initial Routing
+[01:18:53] Phase 4 Rip-up And Reroute
+[01:18:53] Phase 4.1 Global Iteration 0
+[01:27:33] Phase 4.2 Global Iteration 1
+[01:29:58] Phase 4.3 Global Iteration 2
+[01:34:11] Phase 5 Delay and Skew Optimization
+[01:34:11] Phase 5.1 Delay CleanUp
+[01:34:11] Phase 5.1.1 Update Timing
+[01:35:31] Phase 5.2 Clock Skew Optimization
+[01:35:45] Phase 6 Post Hold Fix
+[01:35:45] Phase 6.1 Hold Fix Iter
+[01:35:51] Phase 6.1.1 Update Timing
+[01:37:40] Phase 7 Leaf Clock Prog Delay Opt
+[01:38:56] Phase 8 Route finalize
+[01:39:09] Phase 9 Verifying routed nets
+[01:39:16] Phase 10 Depositing Routes
+[01:40:06] Phase 11 Post Router Timing
+[01:40:19] Finished 5th of 6 tasks (FPGA routing). Elapsed time: 00h 36m 18s 
+
+[01:40:19] Starting bitstream generation..
+
+INFO: [XOCC 60-991] clock name 'clk_extra_b0' (clock ID '0') is being mapped to clock name 'DATA_CLK' in the xclbin
+INFO: [XOCC 60-991] clock name 'clk_extra_c0' (clock ID '1') is being mapped to clock name 'KERNEL_CLK' in the xclbin
+INFO: [XOCC 60-991] clock name 'clk_main_a0' (clock ID '') is being mapped to clock name 'clk_main_a0' in the xclbin
+INFO: [CF2SW 83-2203] Adding accelerator adapters...
+INFO: [CF2SW 83-2200] Adding axi_interconnects...
+INFO: [CF2SW 83-2201] Adding axi_stream_router for scatter-gather DMAs...
+INFO: [CF2SW 83-2202] Adding axi_dwidth_converters...
+INFO: [CF2SW 83-2208] Adding bus connections for logical connections...
+INFO: [CF2SW 83-2205] Adding clock connections...
+INFO: [CF2SW 83-2206] Adding reset connections...
+INFO: [XOCC 60-244] Generating system estimate report...
+INFO: [XOCC 60-1092] Generated system estimate report: /home/tbollaer/Work/aws-tests/filter2d/v5/builddir.3k.hw/reports/link/system_estimate_fpga.3k.hw.xtxt
+INFO: [XOCC 60-586] Created /home/tbollaer/Work/aws-tests/filter2d/v5/xclbin/top_sp.ltx
+INFO: [XOCC 60-586] Created xclbin/fpga.3k.hw.xclbin
+INFO: [XOCC 60-791] Total elapsed time: 2h 21m 26s

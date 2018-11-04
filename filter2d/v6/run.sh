@@ -1,7 +1,12 @@
 #!/bin/bash
 
+function run_on_f1 {
+sudo sh -s -- <<EOF
+        source /opt/xilinx/xrt/setup.sh
+	./Filter2D.exe -x xclbin/fpga.3k.hw.awsxclbin -i img/picadilly_1080p.bmp -n 5
+EOF
+}
+
 make
-sudo sh
-source /opt/Xilinx/SDx/2017.4.rte.dyn/setup.sh
-./Filter2D.exe -x xclbin/fpga.3k.hw.awsxclbin -i img/picadilly_1080p.bmp -n 5
-exit
+run_on_f1
+

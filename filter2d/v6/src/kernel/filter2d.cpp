@@ -54,48 +54,47 @@ void Filter2D(
 extern "C" {
 
 void Filter2DKernel(
-        const short* coeffs,
-        float        factor,
-		const ap_uint<AXIMM_DATA_WIDTH>* src,
-		unsigned int width,
-		unsigned int height,
-		unsigned int stride,
-		ap_uint<AXIMM_DATA_WIDTH>* dst)
+    const short* coeffs,
+    float        factor,
+    const ap_uint<AXIMM_DATA_WIDTH>* src,
+    unsigned int width,
+    unsigned int height,
+    unsigned int stride,
+    ap_uint<AXIMM_DATA_WIDTH>* dst)
   {
-    #pragma HLS INTERFACE m_axi     port=coeffs offset=slave bundle=gmem1
+    #pragma HLS INTERFACE m_axi     port=coeffs offset=slave bundle=port0
     #pragma HLS INTERFACE s_axilite port=coeffs              bundle=control    
     #pragma HLS INTERFACE s_axilite port=factor              bundle=control
-    #pragma HLS INTERFACE m_axi     port=src    offset=slave bundle=gmem0  
+    #pragma HLS INTERFACE m_axi     port=src    offset=slave bundle=port1
     #pragma HLS INTERFACE s_axilite port=src                 bundle=control
     #pragma HLS INTERFACE s_axilite port=width               bundle=control
     #pragma HLS INTERFACE s_axilite port=height              bundle=control
     #pragma HLS INTERFACE s_axilite port=stride              bundle=control
-    #pragma HLS INTERFACE m_axi     port=dst    offset=slave bundle=gmem2
+    #pragma HLS INTERFACE m_axi     port=dst    offset=slave bundle=port2
     #pragma HLS INTERFACE s_axilite port=dst                 bundle=control
     #pragma HLS INTERFACE s_axilite port=return              bundle=control
 
 #ifndef __SYNTHESIS__
-	assert(width <= 1920);
-	assert(height<= 1080);
+    assert(width <= 1920);
+    assert(height<= 1080);
 #endif
-            
-	// Stream of pixels from kernel input to filter, and from filter to output
-	static hls::stream<U8> src_pixels;
-	static hls::stream<U8> dst_pixels;
-	#pragma HLS stream variable=src_pixels depth=64
-	#pragma HLS stream variable=dst_pixels depth=64
 
+    #pragma HLS DATAFLOW
+         
+    // Stream of pixels from kernel input to filter, and from filter to output
+    static hls::stream<U8> src_pixels;
+    static hls::stream<U8> dst_pixels;
+    #pragma HLS stream variable=src_pixels depth=64
+    #pragma HLS stream variable=dst_pixels depth=64
 
-	#pragma HLS DATAFLOW
+    // Read image data from global memory over AXI4 MM, and stream pixels out
+    AXIBursts2PixelStream((AXIMM)src, width, height, stride, src_pixels);
 
-	// Read image data from global memory over AXI4 MM, and stream pixels out
-	AXIBursts2PixelStream((AXIMM)src, width, height, stride, src_pixels);
+    // Process incoming stream of pixels, and stream pixels out
+    Filter2D(coeffs, factor, src_pixels, width, height, dst_pixels);
 
-	// Process incoming stream of pixels, and stream pixels out
-	Filter2D(coeffs, factor, src_pixels, width, height, dst_pixels);
-
-	// Write incoming stream of pixels and write them to global memory over AXI4 MM
-	PixelStream2AXIBursts(dst_pixels, width, height, stride, (AXIMM)dst);
+    // Write incoming stream of pixels and write them to global memory over AXI4 MM
+    PixelStream2AXIBursts(dst_pixels, width, height, stride, (AXIMM)dst);
 
   }
 
