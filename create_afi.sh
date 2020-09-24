@@ -1,46 +1,21 @@
 #!/bin/bash
 
-# : "${AWS_ACCESS_KEY_ID:?Need to set AWS_ACCESS_KEY_ID}"
-# : "${AWS_SECRET_ACCESS_KEY:?Need to set AWS_SECRET_ACCESS_KEY}"
-# : "${AWS_DEFAULT_REGION:?Need to set AWS_DEFAULT_REGION}"
-# : "${AWS_DEFAULT_OUTPUT:?Need to set AWS_DEFAULT_OUTPUT}"
 : "${1:?Need to provide an input xclbin file}"
 
-file=$(basename ${1})
-echo $file
+xclbinfile=$(basename ${1})
 
-if [ -f $file ]; then
-   echo "File $file exists."
+if [ -f $xclbinfile ]; then
+   echo "File $xclbinfile exists."
 else
-   echo "File $file does not exist."
+   echo "File $xclbinfile does not exist."
 fi
 
-xclbinfile=$PWD/$file
-awsxclbindir=afi.$file
-
-rm -rf $awsxclbindir
-mkdir $awsxclbindir
-cd $awsxclbindir
-
-# Private account
-#afibucket=myafibucket
-#dcpfolder=dcpfolder
-#logsfolder=logsfolder
-
 # Partner account
-afibucket=aws-xlnx-f1-developer
-dcpfolder=pavan@xilinx.com/f1-dcp-folder/
-logsfolder=pavan@xilinx.com/f1-logs/
+afibucket=aws-xlnx-f1-developer/tbollaer
+dcpfolder=xlnx-f1-developer/tbollaer/f1-dcp-folder
+logsfolder=xlnx-f1-developer/tbollaer/f1-logs
 
-$SDACCEL_DIR/tools/create_sdaccel_afi.sh -s3_bucket=$afibucket -s3_dcp_key=$dcpfolder -s3_logs_key=$logsfolder -xclbin=$xclbinfile
+$VITIS_DIR/tools/create_vitis_afi.sh -s3_bucket=$afibucket -s3_dcp_key=$dcpfolder -s3_logs_key=$logsfolder -xclbin=$xclbinfile -o=$xclbinfile.awsxclbin
 
-wait
-
-mkdir output
-mkdir output/afi_info
-cp *.awsxclbin output
-cp *.txt output/afi_info
-
-echo source ~/aws-tests/afi_status.sh 
 
 
