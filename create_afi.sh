@@ -12,7 +12,7 @@ fi
 
 extension="${xclbinfile##*.}"
 filename="${xclbinfile%.*}"
-awsxclbinfile=$filename.awsxclbin
+awsxclbinfile=$filename
 
 afibucket=xlnx-f1-developer/tbollaer
 dcpfolder=xlnx-f1-developer/tbollaer/f1-dcp-folder
