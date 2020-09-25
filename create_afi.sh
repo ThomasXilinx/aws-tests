@@ -10,12 +10,15 @@ else
    echo "File $xclbinfile does not exist."
 fi
 
-# Partner account
-afibucket=aws-xlnx-f1-developer/tbollaer
+extension="${xclbinfile##*.}"
+filename="${xclbinfile%.*}"
+awsxclbinfile=$filename.awsxclbin
+
+afibucket=xlnx-f1-developer/tbollaer
 dcpfolder=xlnx-f1-developer/tbollaer/f1-dcp-folder
 logsfolder=xlnx-f1-developer/tbollaer/f1-logs
 
-$VITIS_DIR/tools/create_vitis_afi.sh -s3_bucket=$afibucket -s3_dcp_key=$dcpfolder -s3_logs_key=$logsfolder -xclbin=$xclbinfile -o=$xclbinfile.awsxclbin
+$VITIS_DIR/tools/create_vitis_afi.sh -s3_bucket=$afibucket -s3_dcp_key=$dcpfolder -s3_logs_key=$logsfolder -xclbin=$xclbinfile -o=$awsxclbinfile
 
 
 
